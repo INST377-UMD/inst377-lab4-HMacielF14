@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title> INST 377 - Lab 4 </title>
+    </head>
+    <body style="background-color: antiquewhite;">
+        <h1 style="text-align: center;"> INST 377 - Lab 4 </h1>
+
+        <!-- Alert | Name Section -->
+        <div class="box left" style="border: 3px dashed white; border-radius: 20px; background-color: lightcoral;
+            color: rgb(255, 0, 255); width: 46.5%; margin: 10px 1.5%; padding: 0;
+            text-align: center;float: left;height: 100px;float: left; clear: left"> 
+            <form name="alertMe" onsubmit="return alertText()" action="">
+                <br><br>
+                <label for="name" style="font-size: 15px;"> Name: </label>
+                <input id="name" type="text" required>
+                <br>
+                <button type="submit"> Alert me!</button>
+            </form>
+        </div>
+
+        <!-- Change Color -->
+        <div class="box right" style="border: 3px dashed white; border-radius: 20px; background-color: lightcoral;
+        color: rgb(255, 0, 255); width: 46.5%; margin: 10px 1.5%; padding: 0;
+        text-align: center;float: left;height: 100px; float: right; clear: right;"> 
+            <button onclick="changeColor()"> Change Color </button>
+        </div>
+
+        <!-- Text Texter -->
+        <div class="box left" style="border: 3px dashed white; border-radius: 20px; background-color: lightcoral;
+            color: rgb(255, 0, 255); width: 46.5%; margin: 10px 1.5%; padding: 0;
+            text-align: center;float: left;height: 100px;float: left; clear: left"> 
+            <form name="formValidate" onsubmit="validateText()" action="">
+                <label for="name"> Name: </label>
+                <input id="name" type="text">
+                <br>
+                <button type="submit"> Validate Text! </button>
+            </form>
+        </div>
+
+        <!-- Add Text  -->
+        <div class="box right" style="border: 3px dashed white; border-radius: 20px; background-color: lightcoral;
+            color: rgb(255, 0, 255); width: 46.5%; margin: 10px 1.5%; padding: 0;
+            text-align: center;float: left;height: 100px; float: right; clear: right;"> 
+            <button onclick="addText()"> Add Text </button>
+        </div>
+
+    <script type ="text/javascript">
+        function alertText(){
+            alert("Hello " + document.getElementById("name").value)
+        }
+
+        function changeColor(){
+            console.log(document.getElementsByTagName("body")[0].style.backgroundColor);
+            if(document.getElementsByTagName("body")[0].style.backgroundColor == "antiquewhite"){
+                document.getElementsByTagName("body")[0].style.backgroundColor = "yellow";
+            } else {
+                document.getElementsByTagName("body")[0].style.backgroundColor = "antiquewhite";
+            } 
+        }
+
+        function addText(){
+            if(document.getElementsByTagName("h1")[0].textContent.trim() == "INST 377 - Lab 4") {
+                document.getElementsByTagName("h1")[0].textContent =  document.getElementsByTagName("h1")[0].textContent.trim() + " by HMF"
+                document.getElementsByTagName("button")[3].textContent = "Remove Text";
+            } else {
+                document.getElementsByTagName("h1")[0].textContent = "INST 377 - Lab 4"
+                document.getElementsByTagName("button")[3].textContent = "Add Text";
+
+            }
+        }
+
+        function validateText(){
+            var validationRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if(validationRegex.test(document.formValidate.name.value)){
+                alert("There is an invalid character! Please try again.")
+            }
+        }
+
+
+    </script>
+    </body>
+</html>
